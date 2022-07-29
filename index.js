@@ -27,7 +27,7 @@ app.use('/api/users', require('./routes/users'));
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/sockect', require('./routes/sockect'));
 
-const server = app.listen(port, '0.0.0.0', () => {
+const server = app.listen(port, () => {
     console.log("server run", port);
 });
 
