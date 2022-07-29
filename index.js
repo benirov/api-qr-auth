@@ -33,7 +33,7 @@ const server = app.listen(port, '0.0.0.0', () => {
 
 const io = socketIo(server,{ 
     cors: {
-      origin: 'http://localhost:3000'
+      origin: process.env.FRONTEND_URL
     }
 }) //in case server and client run on different urls
 global.io = io;
