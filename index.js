@@ -13,7 +13,7 @@ const opcionesCors = {
     origin: process.env.FRONTEND_URL
 }
 app.use(cors({
-    origin: ['http://localhost:3000']
+    origin: [process.env.FRONTEND_URL]
 }));
 
 const port = process.env.PORT || 4000;
