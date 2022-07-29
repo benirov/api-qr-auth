@@ -1,4 +1,4 @@
-const Usser = require('../models/User');
+const User = require('../models/User');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { validationResult } = require('express-validator');
@@ -18,13 +18,13 @@ exports.authUser = async (req, res, next) => {
     let user = await User.findOne({email});
 
     if(!user){
-        res.status(401).json({msg: "Email not found"});
+        res.status(401).json({message: "Email not found"});
         return next();
     }
 
     //verificar password y autenticar
     if(!bcrypt.compareSync(password, user.password)){
-        res.status(401).json({msg: "Wrong password"});
+        res.status(401).json({message: "Wrong password"});
         return next();
     }
 
@@ -41,6 +41,6 @@ exports.authUser = async (req, res, next) => {
 exports.userAuthenticate = async (req, res) => {
 
   
-    return res.json({ usuario: req.usuario});
+    return res.json({ usuario: req.user});
 
 } 

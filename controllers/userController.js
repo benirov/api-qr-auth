@@ -16,7 +16,7 @@ exports.newUser = async (req, res) => {
     let user = await User.findOne({email});
 
     if(user){
-        return res.status(400).json({msg: "User exist"});
+        return res.status(400).json({message: "User exist"});
     }
 
     user =new User(req.body);
@@ -24,6 +24,6 @@ exports.newUser = async (req, res) => {
     const salt = await bcrypt.genSalt(10);
     user.password = await bcrypt.hash(password, salt);
     user.save();
-    res.json({msg: "User register success"});
+    res.json({message: "User register success"});
 
 } 
